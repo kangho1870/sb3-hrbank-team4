@@ -12,9 +12,9 @@ spring:
     active: prod
 
   datasource:
-    url: ${JDBC_DATABASE_URL}
-    username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
+    url: jdbc:postgresql://containers.uprailway.app:12345/hrbank_db
+    username: fource
+    password: fource1234
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-init-sql: SET SESSION hibernate.jdbc.lob.non_contextual_creation=true
