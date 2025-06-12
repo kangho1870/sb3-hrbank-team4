@@ -7,8 +7,8 @@ spring:
 
   datasource:
     url: jdbc:postgresql://yamabiko.proxy.rlwy.net:10690/railway
-    username: postgres
-    password: fLGVUKxVANLevbLwWRWiNLVokudHyhVc
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-init-sql: SET SESSION hibernate.jdbc.lob.non_contextual_creation=true
