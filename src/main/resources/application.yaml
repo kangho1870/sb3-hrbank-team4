@@ -1,40 +1,39 @@
 server:
-  port: ${PORT:8080}  # Railway는 PORT를 자동 할당하므로 반드시 환경변수 사용
-
-logging:
-  level:
-    root: INFO
-    org.hibernate.sql: debug
-    org.hibernate.jdbc.bind: trace
+  port: ${PORT:8080}  # Railway에서 포트는 자동 할당됨
 
 spring:
   profiles:
     active: prod
 
   datasource:
-    url: jdbc:postgresql://containers.uprailway.app:12345/hrbank_db
-    username: fource
-    password: fource1234
+    url: jdbc:postgresql://yamabiko.proxy.rlwy.net:10690/railway
+    username: postgres
+    password: fLGUVKxVANLevblWRWiNLVokudHyhVc
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-init-sql: SET SESSION hibernate.jdbc.lob.non_contextual_creation=true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        highlight_sql: true
+        use_sql_comments: false
+    open-in-view: false
 
   devtools:
     restart:
       enabled: false
 
-  jpa:
-    generate-ddl: false
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    properties:
-      hibernate:
-        format_sql: true
-        highlight_sql: true
-        use_sql_comments: false
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        show_sql: true
-    open-in-view: false
+logging:
+  level:
+    root: INFO
+    org.hibernate.sql: debug
+    org.hibernate.jdbc.bind: trace
 
 hrbank:
   storage:
